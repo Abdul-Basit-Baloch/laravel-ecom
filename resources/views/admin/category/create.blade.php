@@ -24,8 +24,9 @@
   
   <div class="container-fluid">
 
-<form method="post" enctype="multipart/form-data" action="{{url('category.store')}}">
+<form method="post" enctype="multipart/form-data" action="{{route('category.store')}}">
   @csrf
+  @method('post')
 <div class="form-group">
     <label class="col-md-4 control-label" for="product_name">
       <span>
@@ -49,7 +50,7 @@
       </span>
       SLUG</label>  
     <div class="col-md-4">
-    <input id="product_name" name="slug" placeholder="SLUG" class="form-control input-md" required="" type="text">
+    <input id="slug" name="slug" placeholder="SLUG" class="form-control input-md" required="" type="text">
       
     </div>
   </div>

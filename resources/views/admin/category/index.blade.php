@@ -52,10 +52,10 @@
                     <td>{{$category->category_name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>
-                      <form action="{{route('category.delete')}}">
+                      <form method="get" action="{{route('category.destroy')}}">
                         @csrf
                         @method('delete')
-                        <a href="{{route('category.delete', $category->id)}}">
+                        <a href="{{route('category.destroy', $category->id)}}">
                           <button class="btn btn-danger">Delete</button></a>
                           
                       </form>
