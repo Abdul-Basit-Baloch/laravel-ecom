@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->text('uses');
             $table->string('warranty');
             $table->string('image');
+            $table->boolean('status')->default(true);
             
         });
     }

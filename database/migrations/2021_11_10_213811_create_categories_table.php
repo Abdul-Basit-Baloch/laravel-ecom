@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('category_name');
             $table->string('slug');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
