@@ -89,8 +89,8 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request,$id)
+    public function destroy(Color $color)
     {
-     Color::find($id)->delete();
-     return redirect()->back();
+     $color->delete();
+     return redirect()->back('color.index');
     }}

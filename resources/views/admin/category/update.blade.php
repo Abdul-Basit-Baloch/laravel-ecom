@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">@yield('page_title','Category')</h1>
+        <h1 class="m-0">@yield('page_title',' Update Category')</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -24,8 +24,9 @@
   
   <div class="container-fluid">
 
-<form method="post" enctype="multipart/form-data" action="{{url('category')}}">
-  @csrf
+<form method="post" action="{{route('category.update')}}">
+    @csrf
+    @method('put')
 <div class="form-group">
     <label class="col-md-4 control-label" for="product_name">
       <span>
@@ -33,9 +34,9 @@
           {{$message}}
         @enderror
       </span>
-      CATEGORY</label>  
+      Update</label>  
     <div class="col-md-4">
-    <input id="product_name" name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
+    <input id="name" value="#" name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
       
     </div>
   </div>
@@ -49,7 +50,7 @@
       </span>
       SLUG</label>  
     <div class="col-md-4">
-    <input id="product_name" name="slug" placeholder="SLUG" class="form-control input-md" required="" type="text">
+    <input id="name" value="#" name="slug" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
       
     </div>
   </div>
@@ -64,8 +65,6 @@
       <button id="singlebutton" name="singlebutton" class="btn btn-primary">Insert</button>
     </div>
     </div>
-    {{session('message')}}
-    
 </form>
  
 @endsection

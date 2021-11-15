@@ -110,16 +110,9 @@ class CouponController extends Controller
      * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy(Couupon $coupon)
     {
-     $res =  Coupon::find($id)->delete();
-       if($res){
-      return redirect()->back();
-    }
-    else {
-      return view('admin.coupon.add-coupon');
-    }
-
-   }
-
+      $coupon->delete();
+     return redirect()->route('coupon.index');
+}
 }

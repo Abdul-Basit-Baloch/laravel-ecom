@@ -10,7 +10,7 @@
           <h1 class="m-0">@yield('page_title','Category')</h1>
         </div><!-- /.col -->
         <div class="col-sm-3">
-          <a href="{{route('add.category')}}">
+          <a href="{{route('category.create')}}">
             <button class="btn btn-primary">
              Add
           </button>
@@ -51,17 +51,28 @@
                     <td scope="row">{{$category->id}}</td>
                     <td>{{$category->category_name}}</td>
                     <td>{{$category->slug}}</td>
-                    <td><a href="{{ route('delete.category', ['id' => $category->id]) }}">
-                      <button class="btn btn-danger">Delete</button></a>
-                          <a href="{{route('update.category',['id'=>$category->id])}}">
+                    <td>
+                      <form action="{{route('category.delete')}}">
+                        @csrf
+                        @method('delete')
+                        <a href="{{route('category.delete', $category->id)}}">
+                          <button class="btn btn-danger">Delete</button></a>
+                          
+                      </form>
+                      
+                        
+
+                         <a href="{{route('category.edit', $category->id)}}">
                             <button class="btn btn-primary">Edit</button></a>
-                         @if($category->status==1)
+                          
+                     
+                      {{--    @if($category->status==1)
                         <a href="{{url('/status-category/status/0')}}/{{$category->id}}">
                           <button class="badge badge-success">Active</button></a>
                         @elseif($category->status==0)
                         <a href="{{url('/status-category/status/1')}}/{{$category->id}}">
                           <button class="badge badge-danger">Deactive</button></a>
-                        @endif   
+                        @endif    --}}
                     </td>
                 </tr>
                 {{session('error')}}

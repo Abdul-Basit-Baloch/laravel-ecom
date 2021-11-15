@@ -14,7 +14,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        return route('show.size');
+        return route('category.index');
     }
     
 
@@ -77,9 +77,9 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy(Size $size)
     {
-     Size::find($id)->delete();
-     return redirect()->back();
+     $size->delete();
+     return redirect()->route('category.index');
     }
 }

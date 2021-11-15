@@ -208,7 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                
           <li class="nav-item @yield('select')">
-            <a href="{{route('show.category')}}" class="nav-link">
+            <a href="{{route('category.index')}}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Category
@@ -221,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
            
         
         <li class="nav-item">
-            <a href="{{route('show.product')}}" class="nav-link">
+            <a href="{{route('product.index')}}" class="nav-link">
               <i class="nav-icon fab fa-product-hunt"></i>
               <p>
                 Product
@@ -233,7 +233,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
            
         
         <li class="nav-item">
-          <a href="{{route('show.size')}}" class="nav-link">
+          <a href="{{route('color.index')}}" class="nav-link">
             <i class="nav-icon fas fa-palette"></i>
             <p>
               Color
@@ -245,7 +245,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
            
         
         <li class="nav-item @yield('select')">
-          <a href="{{route('show.size')}}" class="nav-link">
+          <a href="{{route('size.index')}}" class="nav-link">
             <i class="nav-icon fas fa-sitemap"></i>
             <p>
               Size
@@ -255,7 +255,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
           
           <li class="nav-item @yield('select')">
-            <a href="{{route('show.coupon')}}" class="nav-link">
+            <a href="{{route('coupon.index')}}" class="nav-link">
               <i class="nav-icon fas fa-sitemap"></i>
               <p>
                 Coupon
