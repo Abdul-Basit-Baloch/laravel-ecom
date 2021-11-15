@@ -15,7 +15,7 @@ class CouponController extends Controller
      */
     public function index()
     {
-        return view('admin.coupon.add-coupon');
+        return view('admin.coupon.index');
     }
     
 
@@ -57,7 +57,7 @@ class CouponController extends Controller
     { 
         $coupons = Coupon::all();
         $data = compact('coupons');  
-        return view('admin.coupon.show-coupon')->with($data);       
+        return view('admin.coupon.index')->with($data);       
     }
 
     /**

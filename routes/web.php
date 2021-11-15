@@ -18,6 +18,13 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\CouponController;
 
+use App\Models\Category;
+use App\Models\Size;
+use App\Models\Color;
+use App\Models\Coupon;
+use App\Models\Product;
+
+
 
 
 /*
@@ -58,10 +65,10 @@ Route::group(['middleware'=>'AdminAuth'], function(){
     Route::post('/forgot-password',[ForgotPassController::class, 'forgot']);
                            
     Route::resource('category',Categorycontroller::class);
-    Route::resource('product',Productcontroller::class); 
-    Route::resource('color',Colorcontroller::class);                         
-    Route::resource('size',Sizecontroller::class);
-    Route::resource('coupon',Couponcontroller::class);
+    Route::resource('product',ProductController::class); 
+    Route::resource('color',ColorController::class);                         
+    Route::resource('size',SizeController::class);
+    Route::resource('coupon',CouponController::class);
         
    //  Route::get('/Sub-Category',[SubCategroController::class, 'index']);
 });    

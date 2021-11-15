@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.add-product');
+        return view('admin.product.index');
     }
     
 
@@ -73,18 +73,7 @@ class ProductController extends Controller
     { 
         $products = Product::all();
         $data = compact('products');  
-        return view('admin.product.show-product')->with($data);       
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function updat(Product $product)
-    {
-        
+        return view('admin.product.index')->with($data);       
     }
 
     /**
@@ -105,9 +94,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-     Product::find($id)->delete();
-     return redirect()->back();
+     $product->delete();
+     return redirect()->route('product.index');
     }
 }

@@ -14,7 +14,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        return route('category.index');
+        return route('size.index');
     }
     
 
@@ -48,7 +48,7 @@ class SizeController extends Controller
     { 
         $sizes = Size::all();
         $data = compact('sizes');  
-        return view('admin.size.show-size')->with($data);       
+        return view('admin.size.index')->with($data);       
     }
 
     /**
@@ -80,6 +80,6 @@ class SizeController extends Controller
     public function destroy(Size $size)
     {
      $size->delete();
-     return redirect()->route('category.index');
+     return redirect()->route('size.index');
     }
 }

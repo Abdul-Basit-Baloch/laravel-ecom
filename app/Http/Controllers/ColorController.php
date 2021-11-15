@@ -14,7 +14,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        return view('admin.color.show-color');
+        return view('admin.color.index');
     }
     
 
@@ -57,7 +57,7 @@ class ColorController extends Controller
     { 
         $colors = Colors::all();
         $data = compact('colors');  
-        return view('admin.color.show-color')->with($data);       
+        return view('admin.color.index')->with($data);       
     }
 
     /**

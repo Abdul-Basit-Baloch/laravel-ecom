@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.add-category');
+      $categories = Category::all();
+          
+      return view('admin.category.index',compact('categories'));     
     }
     
 
@@ -50,9 +52,7 @@ class CategoryController extends Controller
      */
     public function show()
     { 
-        $categories = Category::all();
-        $data = compact('categories');  
-        return view('admin.category.show-category')->with($data);       
+        
     }
 
     /**
@@ -61,13 +61,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-   public function status(Request $request, $status, $id)
+   public function status(Request $request, Category $category)
    { 
        $category = Category::find($id);
        $category->status=$status;
        $category->save();
          
-      $category->session()->flash('status','status updated successfully');
+      $request->session()->flash('status','status updated successfully');
       return redirect()->back();
 
    }
@@ -85,7 +85,7 @@ class CategoryController extends Controller
       $req = Category::find($id);
         
       $data =  compact('req');
-      return view('admin.category.update-category')->with($data);    
+      return view('admin.category.update')->with($data);    
   }
     public function update(Request $request,$id){
       $category = Category::find($id);
