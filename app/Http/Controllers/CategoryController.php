@@ -79,15 +79,19 @@ class CategoryController extends Controller
       * @param  \App\Models\Category  $category
    * @return \Illuminate\Http\Response
    */
-  public function edit(Category $cat)
+  
+
+
+  public function edit(Category $category)
   {
         
-      $req = Category::find($id);
+      $req = Category::find($category->id);
         
       $data =  compact('req');
       return view('admin.category.update')->with($data);    
   }
     public function update(Request $request){
+      dump($id);
       $category = Category::find($id);
          
       $category->category_name= $request['category_name'];
@@ -106,8 +110,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-     $category->delete();
-     
-     return redirect()->route('category.index');
+      $res=category::where('id', $category->id)->delete();
+     if($res)
+return back()->with('message', "Data Deledet Succeesfully");
+else
+return back()->with('error', "Data Deledet Succeesfully");
     }
 }

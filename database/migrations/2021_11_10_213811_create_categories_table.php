@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCategoriesTable extends Migration
 {
+  
     /**
      * Run the migrations.
      *
@@ -16,9 +17,16 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name');
-            $table->string('slug');
-            $table->boolean('status')->default(true);
+            $table->text('description')->nullable();
+            $table->string('slug')->unique();
+            $table->string('banner')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->float('discount')->default(0)->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
+         
         });
     }
 

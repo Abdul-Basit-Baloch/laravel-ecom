@@ -61,8 +61,6 @@ Route::group(['middleware'=>'AdminAuth'], function(){
     Route::get('/admin/login',[AdminController::class,'index']);
     Route::get('/dashboard',[AdminController::class, 'dashboard']);    
     Route::post('/admin/auth',[AdminController::class, 'AdminAuth'])->name('admin.auth');
-    Route::get('/forgot-password',[ForgotPassController::class, 'index']);
-    Route::post('/forgot-password',[ForgotPassController::class, 'forgot']);
                            
     Route::resource('category',Categorycontroller::class);
     Route::resource('product',ProductController::class); 

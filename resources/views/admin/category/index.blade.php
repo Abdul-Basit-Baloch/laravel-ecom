@@ -18,6 +18,26 @@
           
         </div><!-- /.col -->
         
+        @if (session()->has('message'))
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                {{session('message')}}
+            </div>
+
+        </div>
+        @endif
+
+
+        @if (session()->has('error'))
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                {{session('error')}}
+            </div>
+
+        </div>
+        @endif
+
+
         <div class="col-sm-7">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -35,7 +55,6 @@
     
     <div class="container-fluid">
 
-        <form method="get">
         <table class="table">
             <thead>
                 <tr>
@@ -52,17 +71,26 @@
                     <td>{{$category->category_name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>
-                      <form method="post" action="{{route('category.destroy', $category)}}">
-                        @csrf
-                        @method('delete')
-                        
-                          <button type="submit" class="btn btn-danger">Delete</button></a>
-                          
-                      </form>
-                      
-                        
 
-                         <a href="{{route('category.edit', $category)}}">
+
+
+
+
+
+
+                       
+                      <form method="POST" action="{{route('category.destroy', $category->id)}}">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
+                  
+                          <div class="form-group">
+                              <input type="submit" class="btn btn-danger delete-user" value="Delete user">
+                          </div>
+                      </form>
+                          
+                                              
+
+                         <a href="{{route('category.edit', $category->id)}}">
                             <button class="btn btn-primary">Edit</button></a>
                           
                      
