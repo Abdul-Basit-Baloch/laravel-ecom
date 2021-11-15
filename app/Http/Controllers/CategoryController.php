@@ -79,7 +79,7 @@ class CategoryController extends Controller
       * @param  \App\Models\Category  $category
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(Category $cat)
   {
         
       $req = Category::find($id);
@@ -87,7 +87,7 @@ class CategoryController extends Controller
       $data =  compact('req');
       return view('admin.category.update')->with($data);    
   }
-    public function update(Request $request,$id){
+    public function update(Request $request){
       $category = Category::find($id);
          
       $category->category_name= $request['category_name'];

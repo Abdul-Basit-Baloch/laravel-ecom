@@ -52,27 +52,27 @@
                     <td>{{$category->category_name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>
-                      <form method="get" action="{{route('category.destroy')}}">
+                      <form method="post" action="{{route('category.destroy', $category)}}">
                         @csrf
                         @method('delete')
-                        <a href="{{route('category.destroy', $category->id)}}">
-                          <button class="btn btn-danger">Delete</button></a>
+                        
+                          <button type="submit" class="btn btn-danger">Delete</button></a>
                           
                       </form>
                       
                         
 
-                         <a href="{{route('category.edit', $category->id)}}">
+                         <a href="{{route('category.edit', $category)}}">
                             <button class="btn btn-primary">Edit</button></a>
                           
                      
-                      {{--    @if($category->status==1)
+                          @if($category->status==1)
                         <a href="{{url('/status-category/status/0')}}/{{$category->id}}">
                           <button class="badge badge-success">Active</button></a>
                         @elseif($category->status==0)
                         <a href="{{url('/status-category/status/1')}}/{{$category->id}}">
                           <button class="badge badge-danger">Deactive</button></a>
-                        @endif    --}}
+                        @endif 
                     </td>
                 </tr>
                 {{session('error')}}
