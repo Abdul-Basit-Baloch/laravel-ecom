@@ -110,10 +110,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-      $res=category::where('id', $category->id)->delete();
-     if($res)
-return back()->with('message', "Data Deledet Succeesfully");
+     if($category->delete())
+return back()->with('message', "Data Deleted Succeesfully");
 else
-return back()->with('error', "Data Deledet Succeesfully");
+return back()->with('error', "An Error Occured While Deleting Category");
     }
 }
