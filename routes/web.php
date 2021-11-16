@@ -63,6 +63,8 @@ Route::group(['middleware'=>'AdminAuth'], function(){
     Route::post('/admin/auth',[AdminController::class, 'AdminAuth'])->name('admin.auth');
                            
     Route::resource('category',Categorycontroller::class);
+    Route::resource('category/delete',[Categorycontroller::class, 'destroy']);
+
     Route::resource('product',ProductController::class); 
     Route::resource('color',ColorController::class);                         
     Route::resource('size',SizeController::class);
