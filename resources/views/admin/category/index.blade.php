@@ -52,19 +52,20 @@
                     <td>{{$category->category_name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>
-                      <form action="{{route('category.destroy')}}">
+                      <form method="GET" action="{{route('category.edit',$category)}}">
+                      <a href="{{route('category.edit', $category)}}">
+                        <button type="submit" class="btn btn-primary">Edit</button></a>
+                      </form>
+                      <form method="POST" action="{{route('category.destroy',$category)}}">
                         @csrf
-                        @method('delete')
-                        <a href="{{route('category.destroy', $category->id)}}">
+                        @method('DELETE')
+                        <a href="{{route('category.destroy', $category)}}">
                           <button class="btn btn-danger">Delete</button></a>
                           
                       </form>
                       
                         
-
-                         <a href="{{route('category.edit', $category->id)}}">
-                            <button class="btn btn-primary">Edit</button></a>
-                          
+                       
                      
                       {{--    @if($category->status==1)
                         <a href="{{url('/status-category/status/0')}}/{{$category->id}}">

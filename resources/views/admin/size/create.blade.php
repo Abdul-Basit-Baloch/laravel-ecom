@@ -24,8 +24,9 @@
   
   <div class="container-fluid">
 
-<form method="post"  action="{{route('add.size')}}">
+<form method="POST" action="{{route('size.store')}}">
   @csrf
+  @method('POST')
 <div class="form-group">
     <label class="col-md-4 control-label" for="product_name">
       <span>
@@ -35,7 +36,7 @@
       </span>
       SIZE</label>  
     <div class="col-md-4">
-    <input type="text" id="title" name="size" placeholder="size" class="form-control input-md" required="" type="text">
+    <input type="text" id="title" name="name" placeholder="size" class="form-control input-md" required="" type="text">
       
     </div>
   </div>
@@ -46,7 +47,7 @@
 <div class="form-group">
     
     <div class="col-md-4">
-      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Insert</button>
+      <button type="submit" id="singlebutton" name="singlebutton" class="btn btn-primary">Insert</button>
     </div>
     </div>
     {{session('message')}}

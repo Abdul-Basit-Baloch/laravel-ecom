@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.add-product');
+        return view('admin.product.index');
     }
     
 
@@ -25,7 +25,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
+    }
+    public function edit(Product $product)
+    {
+      $product = product::find($product->id);
+      $data = compact('product');
+      
+        return view('admin.product.update')->with($data);    
     }
 
     /**
@@ -76,16 +83,6 @@ class ProductController extends Controller
         return view('admin.product.show-product')->with($data);       
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function updat(Product $product)
-    {
-        
-    }
 
     /**
      * Update the specified resource in storage.
@@ -96,7 +93,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product = product::find($product->id);
+        $product->name= $request['name'];
+        $product->brand = $request['brand'];
+        $product->model= $request['model'];
+        $product->shortDesc= $request['short-desc'];
+        $product->desc= $request['desc'];
+        $product->keweords= $request['keweords'];
+        $product->uses= $request['uses'];
+        $product->warranty= $request['warranty'];
+        $product->image= $request['image'];
+        $product->save();
+        $request->session()->flash('message','Updated product successfully');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -105,9 +114,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-     Product::find($id)->delete();
-     return redirect()->back();
+     $product->delete();
+     
+     return redirect()->route('product.index');
     }
 }

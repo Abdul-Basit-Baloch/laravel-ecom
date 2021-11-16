@@ -10,7 +10,7 @@
           <h1 class="m-0">@yield('page_title','Product')</h1>
         </div><!-- /.col -->
         <div class="col-sm-3">
-          <a href="{{route('add.product')}}">
+          <a href="{{route('product.create')}}">
             <button class="btn btn-primary">
              Add
           </button>
@@ -57,16 +57,16 @@
                     <td>{{$product->color}}</td>
                     <td>{{$product->size}}</td>
                     <td>{{$product->image}}</td>
-                    <td>
+                    {{-- <td>
                         @if($product->status==1)
                     <p class="badge badge-success">Active</p>
                      @elseif($product->status==0) 
                      <p class="badge badge-danger">Deactive</p>
                     @endif
-                    </td>
+                    </td> --}}
                     
-                    <td><a href="{{route('delete.product',['id'=>$product->id])}}"><button class="btn btn-danger">Delete</button></a>
-                        <a href="{{route('update.product')}}"><button class="btn btn-primary">Edit</button></a>
+                    <td><a href="{{route('product.destroy',$product)}}"><button class="btn btn-danger">Delete</button></a>
+                        <a href="{{route('product.edit',$product)}}"><button class="btn btn-primary">Edit</button></a>
                     </td>
                 </tr>
                 @endforeach

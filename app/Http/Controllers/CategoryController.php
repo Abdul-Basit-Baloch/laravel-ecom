@@ -82,15 +82,15 @@ class CategoryController extends Controller
    */
   public function edit(Category $category)
   {
-        
-      $req = Category::find($category->id);
-        
-      $data =  compact('req');
-      return view('admin.category.update-category')->with($data);    
+    $category = Category::find($category->id);
+    $data = compact('category');
+    
+      return view('admin.category.update')->with($data);    
   }
-    public function update(Request $request,$id){
-      $category = Category::find($id);
-         
+
+    public function update(Category $category,Request $request){
+      
+      $category = Category::find($category->id);
       $category->category_name= $request['category_name'];
       $category->slug = $request['slug'];
       $category->status = 1;

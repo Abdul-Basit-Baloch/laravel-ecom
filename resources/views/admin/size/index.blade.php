@@ -10,7 +10,7 @@
           <h1 class="m-0">@yield('page_title','Size')</h1>
         </div><!-- /.col -->
         <div class="col-sm-3">
-          <a href="{{route('add.size')}}">
+          <a href="{{route('size.create')}}">
             <button class="btn btn-primary">
              Add
           </button>
@@ -51,19 +51,31 @@
                     <td scope="row">{{$size->id}}</td>
                     <td>{{$size->size}}</td>
                     
-                    <td><a href="{{route('delete.size',['id'=>$size->id])}}"><button class="btn btn-danger">Delete</button></a>
-                        <a href="{{url('update-size/status')}}/{{($size->id)}}"><button class="btn btn-primary">Edit</button></a>
-                        @if($size->status==1)
+                    <td>
+                      <form method="GET" action="{{route('size.edit',$size)}}">
+                        <a href="{{route('size.edit', $size)}}">
+                          <button type="submit" class="btn btn-primary">Edit</button></a>
+                        </form>
+                        <form method="POST" action="{{route('size.destroy',$size)}}">
+                          @csrf
+                          @method('DELETE')
+                          <a href="{{route('size.destroy', $size)}}">
+                            <button class="btn btn-danger">Delete</button></a>
+                          </form>
+{{--                         
+     
+                        </form>
+                          @if($size->status==1)
                         <a href="{{url('show-size/status/0')}}/{{$size->id}}"><button class="badge badge-success">Active</button></a>
                         @elseif($size->status==0)
                         <a href="{{url('show-size/status/1')}}/{{$size->id}}"><button class="badge badge-danger">Deactive</button></a>
-                        @endif
-                    </td>
+                        @endif  --}}
+                     </td> 
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </form>
+    
 @endsection
 
 

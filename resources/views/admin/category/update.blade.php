@@ -24,9 +24,9 @@
   
   <div class="container-fluid">
 
-<form method="post" action="{{route('category.update')}}">
+<form method="POST" action="{{route('category.update',$category)}}">
     @csrf
-    @method('put')
+    @method('PUT')
 <div class="form-group">
     <label class="col-md-4 control-label" for="product_name">
       <span>
