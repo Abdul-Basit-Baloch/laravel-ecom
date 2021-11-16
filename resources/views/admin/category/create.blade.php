@@ -24,8 +24,9 @@
   
   <div class="container-fluid">
 
-<form method="post" enctype="multipart/form-data" action="{{url('category.store')}}">
+<form method="POST"  action="{{route('category.store')}}">
   @csrf
+  @method('POST')
 <div class="form-group">
     <label class="col-md-4 control-label" for="product_name">
       <span>
@@ -35,13 +36,13 @@
       </span>
       CATEGORY</label>  
     <div class="col-md-4">
-    <input id="product_name" name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
+    <input  name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
       
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="product_name">
+    <label class="col-md-4 control-label" >
       <span>
         @error('slug')
           {{$message}}
@@ -61,7 +62,7 @@
 <div class="form-group">
     
     <div class="col-md-4">
-      <button id="singlebutton" name="singlebutton" class="btn btn-primary">Insert</button>
+      <button type="submit" name="singlebutton" class="btn btn-primary">Insert</button>
     </div>
     </div>
     {{session('message')}}

@@ -15,8 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      
-        return view('admin.category.index');
+     
+      $categories = Category::all();
+      $data = compact('categories');  
+      return view('admin.category.index')->with($data); 
     }
     
 
@@ -49,11 +51,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    { 
-        $categories = Category::all();
-        $data = compact('categories');  
-        return view('admin.category.show-category')->with($data);       
+    public function create()
+    {       
+      return view('admin.category.create');
     }
 
     /**
@@ -80,10 +80,10 @@ class CategoryController extends Controller
       * @param  \App\Models\Category  $category
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(Category $category)
   {
         
-      $req = Category::find($id);
+      $req = Category::find($category->id);
         
       $data =  compact('req');
       return view('admin.category.update-category')->with($data);    
@@ -96,7 +96,7 @@ class CategoryController extends Controller
       $category->status = 1;
       $category->save();
       $request->session()->flash('message','Updated category successfully');
-      return redirect()->back();
+      return redirect()->route('category.index');
     }
 
      /**
