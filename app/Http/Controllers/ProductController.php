@@ -14,7 +14,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::all();
+        $data = compact('products');
+          
+        return view('admin.product.index')->with($data);
     }
     
 
@@ -80,7 +83,7 @@ class ProductController extends Controller
     { 
         $products = Product::all();
         $data = compact('products');  
-        return view('admin.product.show-product')->with($data);       
+        return view('admin.product.index')->with($data);       
     }
 
 
