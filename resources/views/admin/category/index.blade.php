@@ -43,13 +43,14 @@
                     <th>Category</th>
                     <th>Slug</th>
                     <th>Action</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($categories as $category)
                 <tr>
                     <td scope="row">{{$category->id}}</td>
-                    <td>{{$category->category_name}}</td>
+                    <td>{{$category->category}}</td>
                     <td>{{$category->slug}}</td>
                     <td>
                       <form method="GET" action="{{route('category.edit',$category)}}">
@@ -64,16 +65,16 @@
                           
                       </form>
                       
-                        
-                       
+                    </td>   
+                       <td>
                      
-                      {{--    @if($category->status==1)
+                        @if($category->status==1)
                         <a href="{{url('/status-category/status/0')}}/{{$category->id}}">
                           <button class="badge badge-success">Active</button></a>
                         @elseif($category->status==0)
                         <a href="{{url('/status-category/status/1')}}/{{$category->id}}">
                           <button class="badge badge-danger">Deactive</button></a>
-                        @endif    --}}
+                        @endif   
                     </td>
                 </tr>
                 {{session('error')}}

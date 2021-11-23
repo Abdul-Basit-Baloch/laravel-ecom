@@ -13,8 +13,12 @@ class ColorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    
     {
-        return view('admin.color.show-color');
+        $colors = Color::all();
+        $data = compact('colors');  
+     
+        return view('admin.color.index')->with($data);
     }
     
 
@@ -25,7 +29,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.color.create');
     }
 
     /**
@@ -37,15 +41,15 @@ class ColorController extends Controller
     public function store(Request $request){
 
         $request->validate([
-          'color' => 'required|min:3|max:10',    
+          'name' => 'required',    
           
         ]);
 
         $color = new Color;
-        $color->color= $request['color'];
+        $color->color= $request['name'];
         
         $color->save();
-        return redirect()->back();
+        return redirect()->route('color.create');
     }
     /**
      * Display the specified resource.
@@ -57,8 +61,17 @@ class ColorController extends Controller
     { 
         $colors = Colors::all();
         $data = compact('colors');  
-        return view('admin.color.show-color')->with($data);       
+        return view('admin.color.index')->with($data);       
     }
+
+    public function edit(Color $color)
+  {
+    $colors = Color::find($color->id);
+    $data = compact('colors');
+    
+      return view('admin.color.update')->with($data);    
+  }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -66,22 +79,18 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function updat(Color $color)
+    public function update(Color $color)
     {
+        $color = Color::find($color->id);
+        $color->name= $request['name'];
         
+        $color->status = 1;
+        $color->save();
+        $request->session()->flash('message','Updated color successfully');
+        return redirect()->route('color.index');
+      
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Color  $color
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Color $color)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -92,5 +101,5 @@ class ColorController extends Controller
     public function destroy(Color $color)
     {
      $color->delete();
-     return redirect()->back('color.index');
+     return redirect()->route('color.index');
     }}

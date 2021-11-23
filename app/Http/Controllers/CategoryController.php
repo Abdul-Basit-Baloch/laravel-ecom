@@ -32,17 +32,17 @@ class CategoryController extends Controller
     public function store(Request $request){
 
         $request->validate([
-          'category_name' => 'required|min:3|max:10|unique:categories,category_name',    
+          'name' => 'required|unique:categories,category',    
           
         ]);
 
         $category = new Category;
-        $category->category_name= $request['category_name'];
+        $category->category= $request['name'];
         $category->slug = $request['slug'];
         $category->status = 1;
         $category->save();
         $request->session()->flash('message','inserted category successfully');
-        return redirect()->back();
+        return redirect()->route('category.create');
         
     }
     /**
@@ -85,13 +85,13 @@ class CategoryController extends Controller
     $category = Category::find($category->id);
     $data = compact('category');
     
-      return view('admin.category.update')->with($data);    
+      return view('admin.category.edit')->with($data);    
   }
 
     public function update(Category $category,Request $request){
       
       $category = Category::find($category->id);
-      $category->category_name= $request['category_name'];
+      $category->category= $request['name'];
       $category->slug = $request['slug'];
       $category->status = 1;
       $category->save();

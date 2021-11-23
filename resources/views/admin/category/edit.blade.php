@@ -28,21 +28,21 @@
     @csrf
     @method('PUT')
 <div class="form-group">
-    <label class="col-md-4 control-label" for="product_name">
+    <label class="col-md-4 control-label" for="name">
       <span>
-        @error('category_name')
+        @error('name')
           {{$message}}
         @enderror
       </span>
       Update</label>  
     <div class="col-md-4">
-    <input id="name" value="#" name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
+    <input id="name" value="{{$category->category}}" name="name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
       
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="product_name">
+    <label class="col-md-4 control-label" for="name">
       <span>
         @error('slug')
           {{$message}}
@@ -50,7 +50,7 @@
       </span>
       SLUG</label>  
     <div class="col-md-4">
-    <input id="name" value="#" name="slug" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
+    <input id="name" value="{{$category->slug}}" name="slug" placeholder="SLUG" class="form-control input-md" required="" type="text">
       
     </div>
   </div>

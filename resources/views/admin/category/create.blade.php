@@ -28,15 +28,15 @@
   @csrf
   @method('POST')
 <div class="form-group">
-    <label class="col-md-4 control-label" for="product_name">
+    <label class="col-md-4 control-label" for="name">
       <span>
-        @error('category_name')
+        @error('name')
           {{$message}}
         @enderror
       </span>
       CATEGORY</label>  
     <div class="col-md-4">
-    <input  name="category_name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
+    <input  name="name" placeholder="CATEGORY NAME" class="form-control input-md" required="" type="text">
       
     </div>
   </div>
